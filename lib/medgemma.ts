@@ -1,0 +1,283 @@
+/**
+ * MedGemma Integration Layer
+ *
+ * Uses HuggingFace Inference Endpoint with OpenAI-compatible API.
+ * Model: google/medgemma-27b-it (87.7% MedQA accuracy)
+ *
+ * HAI-DEF Attribution: This project uses MedGemma from Google's
+ * Health AI Developer Foundations (HAI-DEF) collection.
+ * https://huggingface.co/collections/google/health-ai-developer-foundations-hai-def
+ */
+
+import { createOpenAI } from '@ai-sdk/openai';
+import { generateText } from 'ai';
+
+// Create MedGemma client using OpenAI-compatible API
+// HuggingFace TGI uses /v1/chat/completions endpoint
+const medgemma = createOpenAI({
+  baseURL: `${process.env.HF_MEDGEMMA_ENDPOINT}/v1`,
+  apiKey: process.env.HF_API_TOKEN,
+  compatibility: 'compatible',
+});
+
+const EDUCATION_SYSTEM_PROMPT = `You are a medical education assistant helping people understand their health conditions before consulting healthcare providers. You are NOT providing diagnosis or treatment advice.
+
+Your response MUST be structured in exactly these 5 sections with the exact headers shown:
+
+## Anatomy & Physiology
+Explain the relevant anatomy and physiological mechanisms in 2-3 paragraphs. Use clear, accessible language. Help the person understand what's happening in their body.
+
+## Research Evidence
+Summarize what peer-reviewed research says about breathwork/breathing exercises for this condition. Be specific about study types (RCTs, meta-analyses) when available. If evidence is limited, say so clearly.
+
+## Contraindications & Precautions
+List specific contraindications for breathwork with this condition. Include:
+- Absolute contraindications (never do)
+- Relative contraindications (proceed with caution)
+- Warning signs to stop immediately
+- Medication interactions to consider
+
+## Questions for Your Doctor
+Provide 4-5 specific questions the person should ask their healthcare provider, tailored to their condition and interest in breathwork.
+
+## Important Disclaimer
+Remind them this is educational information only. Emphasize the need for professional medical evaluation before starting any new practice.
+
+Be thorough but accessible. Use bullet points where appropriate. Never minimize serious conditions.`;
+
+export interface EducationRequest {
+  healthQuestion: string;
+  condition?: string;
+  currentTreatments?: string;
+}
+
+export interface EducationResponse {
+  anatomy_physiology: string;
+  research_evidence: string;
+  contraindications: {
+    absolute: string[];
+    relative: string[];
+    warning_signs: string[];
+    medication_notes: string;
+  };
+  questions_for_doctor: string[];
+  disclaimer: string;
+  recommended_protocol_type: 'gentle' | 'moderate' | 'standard';
+  raw_response: string;
+}
+
+/**
+ * Get comprehensive health education from MedGemma
+ */
+export async function getHealthEducation(
+  request: EducationRequest
+): Promise<EducationResponse> {
+  const userPrompt = buildUserPrompt(request);
+
+  const { text } = await generateText({
+    model: medgemma('google/medgemma-27b-it'),
+    system: EDUCATION_SYSTEM_PROMPT,
+    prompt: userPrompt,
+    maxTokens: 2048,
+    temperature: 0.7,
+  });
+
+  return parseEducationResponse(text);
+}
+
+function buildUserPrompt(request: EducationRequest): string {
+  let prompt = `Health question from community member:\n"${request.healthQuestion}"`;
+
+  if (request.condition) {
+    prompt += `\n\nSpecific condition mentioned: ${request.condition}`;
+  }
+
+  if (request.currentTreatments) {
+    prompt += `\n\nCurrent treatments/medications: ${request.currentTreatments}`;
+  }
+
+  prompt += `\n\nPlease provide comprehensive educational information following the exact structure specified. Focus on breathwork/breathing exercises as the intervention being considered.`;
+
+  return prompt;
+}
+
+function parseEducationResponse(text: string): EducationResponse {
+  // Parse sections from markdown response
+  const sections: Record<string, string> = {};
+  const sectionRegex = /## ([^\n]+)\n([\s\S]*?)(?=## |$)/g;
+  let match;
+
+  while ((match = sectionRegex.exec(text)) !== null) {
+    const header = match[1].trim().toLowerCase();
+    const content = match[2].trim();
+    sections[header] = content;
+  }
+
+  // Extract anatomy section
+  const anatomy_physiology = sections['anatomy & physiology'] ||
+    sections['anatomy and physiology'] ||
+    extractSection(text, 'anatomy') ||
+    'Please consult the full response for anatomical information.';
+
+  // Extract research section
+  const research_evidence = sections['research evidence'] ||
+    extractSection(text, 'research') ||
+    'Limited research evidence available for this specific query. Please consult peer-reviewed sources.';
+
+  // Extract contraindications
+  const contraindicationsSection = sections['contraindications & precautions'] ||
+    sections['contraindications and precautions'] ||
+    extractSection(text, 'contraindication') || '';
+
+  const contraindications = parseContraindications(contraindicationsSection);
+
+  // Extract questions
+  const questionsSection = sections['questions for your doctor'] ||
+    extractSection(text, 'question') || '';
+  const questions_for_doctor = parseQuestions(questionsSection);
+
+  // Extract disclaimer
+  const disclaimer = sections['important disclaimer'] ||
+    sections['disclaimer'] ||
+    'This information is for educational purposes only and does not constitute medical advice. Please consult a qualified healthcare provider before starting any new health practice.';
+
+  // Determine protocol type based on contraindications severity
+  const recommended_protocol_type = determineProtocolType(contraindications);
+
+  return {
+    anatomy_physiology,
+    research_evidence,
+    contraindications,
+    questions_for_doctor,
+    disclaimer,
+    recommended_protocol_type,
+    raw_response: text,
+  };
+}
+
+function extractSection(text: string, keyword: string): string {
+  const lines = text.split('\n');
+  let inSection = false;
+  let content: string[] = [];
+
+  for (const line of lines) {
+    if (line.toLowerCase().includes(keyword) && (line.startsWith('#') || line.startsWith('**'))) {
+      inSection = true;
+      continue;
+    }
+    if (inSection && (line.startsWith('#') || line.startsWith('**'))) {
+      break;
+    }
+    if (inSection) {
+      content.push(line);
+    }
+  }
+
+  return content.join('\n').trim();
+}
+
+function parseContraindications(section: string): EducationResponse['contraindications'] {
+  const absolute: string[] = [];
+  const relative: string[] = [];
+  const warning_signs: string[] = [];
+  let medication_notes = '';
+
+  const lines = section.split('\n');
+  let currentCategory = '';
+
+  for (const line of lines) {
+    const lowerLine = line.toLowerCase();
+
+    if (lowerLine.includes('absolute')) {
+      currentCategory = 'absolute';
+    } else if (lowerLine.includes('relative') || lowerLine.includes('caution')) {
+      currentCategory = 'relative';
+    } else if (lowerLine.includes('warning') || lowerLine.includes('stop')) {
+      currentCategory = 'warning';
+    } else if (lowerLine.includes('medication')) {
+      currentCategory = 'medication';
+    }
+
+    const bulletMatch = line.match(/^[\s]*[-*•]\s*(.+)/);
+    if (bulletMatch) {
+      const item = bulletMatch[1].trim();
+      if (currentCategory === 'absolute') absolute.push(item);
+      else if (currentCategory === 'relative') relative.push(item);
+      else if (currentCategory === 'warning') warning_signs.push(item);
+      else if (currentCategory === 'medication') medication_notes += item + ' ';
+      else relative.push(item); // Default to relative
+    }
+  }
+
+  // Ensure we have at least defaults
+  if (absolute.length === 0) {
+    absolute.push('Consult healthcare provider before starting any breathwork practice');
+  }
+  if (warning_signs.length === 0) {
+    warning_signs.push('Dizziness or lightheadedness', 'Chest pain or pressure', 'Numbness or tingling', 'Severe anxiety or panic');
+  }
+
+  return {
+    absolute,
+    relative,
+    warning_signs,
+    medication_notes: medication_notes.trim() || 'Discuss any current medications with your healthcare provider before starting breathwork.',
+  };
+}
+
+function parseQuestions(section: string): string[] {
+  const questions: string[] = [];
+  const lines = section.split('\n');
+
+  for (const line of lines) {
+    const bulletMatch = line.match(/^[\s]*[-*•\d.]+\s*(.+)/);
+    if (bulletMatch) {
+      const question = bulletMatch[1].trim();
+      if (question.length > 15) {
+        questions.push(question);
+      }
+    }
+  }
+
+  if (questions.length === 0) {
+    return [
+      'Is breathwork safe for my specific condition?',
+      'Are there any techniques I should avoid?',
+      'How might my current medications interact with breathing exercises?',
+      'What warning signs should prompt me to stop and seek help?',
+      'Would you recommend working with a certified instructor?',
+    ];
+  }
+
+  return questions.slice(0, 6);
+}
+
+function determineProtocolType(contraindications: EducationResponse['contraindications']): 'gentle' | 'moderate' | 'standard' {
+  const absoluteCount = contraindications.absolute.length;
+  const relativeCount = contraindications.relative.length;
+
+  // More contraindications = gentler protocol
+  if (absoluteCount > 2 || relativeCount > 4) {
+    return 'gentle';
+  }
+  if (absoluteCount > 0 || relativeCount > 2) {
+    return 'moderate';
+  }
+  return 'standard';
+}
+
+/**
+ * Check if MedGemma endpoint is available
+ */
+export async function checkMedGemmaHealth(): Promise<boolean> {
+  try {
+    const response = await fetch(`${process.env.HF_MEDGEMMA_ENDPOINT}/v1/models`, {
+      headers: {
+        'Authorization': `Bearer ${process.env.HF_API_TOKEN}`,
+      },
+    });
+    return response.ok;
+  } catch {
+    return false;
+  }
+}

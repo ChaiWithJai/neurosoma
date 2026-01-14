@@ -1,0 +1,49 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Confetti/Sparkles -->
+  <circle cx="30" cy="40" r="4" fill="#FF6B6B"/>
+  <circle cx="60" cy="25" r="3" fill="#4ECDC4"/>
+  <circle cx="140" cy="30" r="4" fill="#FFE66D"/>
+  <circle cx="170" cy="50" r="3" fill="#95E1D3"/>
+  <circle cx="50" cy="60" r="2" fill="#DDA0DD"/>
+  <circle cx="150" cy="55" r="2" fill="#FF6B6B"/>
+  
+  <!-- Stars -->
+  <path d="M25 70 L28 78 L36 78 L30 83 L32 91 L25 86 L18 91 L20 83 L14 78 L22 78 Z" fill="#FFD700"/>
+  <path d="M175 65 L177 70 L182 70 L178 74 L180 79 L175 76 L170 79 L172 74 L168 70 L173 70 Z" fill="#FFD700"/>
+
+  <!-- Body (White base) - Standing/Celebrating -->
+  <rect x="55" y="90" width="90" height="100" rx="35" fill="white"/>
+  <circle cx="100" cy="85" r="45" fill="white"/>
+
+  <!-- Calico Spots -->
+  <path d="M60 80 Q 75 65 85 95 L 60 90 Z" fill="#E58F00"/>
+  <path d="M140 70 Q 125 65 130 90 L 140 85 Z" fill="#444"/>
+
+  <!-- Ears (Perked up - excited) -->
+  <path d="M62 55 L 45 15 L 82 50 Z" fill="white"/>
+  <path d="M138 55 L 155 15 L 118 50 Z" fill="#444"/>
+  
+  <!-- Eyes (Happy Wide) -->
+  <circle cx="80" cy="80" r="10" fill="#444"/>
+  <circle cx="120" cy="80" r="10" fill="#444"/>
+  <circle cx="77" cy="77" r="4" fill="white"/>
+  <circle cx="117" cy="77" r="4" fill="white"/>
+  
+  <!-- Blush -->
+  <ellipse cx="65" cy="95" rx="8" ry="4" fill="#FFB6C1" opacity="0.6"/>
+  <ellipse cx="135" cy="95" rx="8" ry="4" fill="#FFB6C1" opacity="0.6"/>
+
+  <!-- Nose -->
+  <path d="M95 100 L 105 100 L 100 107 Z" fill="#FFC0CB"/>
+  
+  <!-- Big Smile -->
+  <path d="M85 112 Q 100 125 115 112" stroke="#444" stroke-width="2" fill="none"/>
+  
+  <!-- Arms Up! -->
+  <path d="M55 110 L 30 70 L 40 65 L 60 100" fill="white" stroke="#ddd"/>
+  <path d="M145 110 L 170 70 L 160 65 L 140 100" fill="white" stroke="#ddd"/>
+  
+  <!-- Paws with party vibes -->
+  <circle cx="35" cy="63" r="10" fill="white" stroke="#ddd"/>
+  <circle cx="165" cy="63" r="10" fill="white" stroke="#ddd"/>
+</svg>

@@ -1,0 +1,44 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Body (Orange) -->
+  <rect x="55" y="95" width="90" height="95" rx="35" fill="#FF9900"/>
+  <circle cx="100" cy="90" r="50" fill="#FF9900"/>
+
+  <!-- Tabby Stripes -->
+  <path d="M100 45 L 95 55 L 100 60 L 105 55 Z" fill="#CC6600"/>
+  <path d="M60 110 L 75 110 L 67 120 Z" fill="#CC6600"/>
+  <path d="M140 110 L 125 110 L 133 120 Z" fill="#CC6600"/>
+
+  <!-- Ears -->
+  <path d="M55 55 L 40 20 L 78 50 Z" fill="#FF9900"/>
+  <path d="M145 55 L 160 20 L 122 50 Z" fill="#FF9900"/>
+  
+  <!-- Bandana -->
+  <path d="M45 60 C 60 35, 140 35, 155 60 L 155 50 C 140 25, 60 25, 45 50 Z" fill="#D22B2B"/>
+  <circle cx="65" cy="45" r="2" fill="white" opacity="0.8"/>
+  <circle cx="100" cy="40" r="2" fill="white" opacity="0.8"/>
+  <circle cx="135" cy="45" r="2" fill="white" opacity="0.8"/>
+  <path d="M155 55 L 170 50 L 170 65 Z" fill="#D22B2B"/>
+
+  <!-- Eyes (Friendly wink) -->
+  <circle cx="75" cy="85" r="12" fill="white"/>
+  <circle cx="75" cy="85" r="5" fill="black"/>
+  <!-- Winking eye -->
+  <path d="M115 85 Q 130 80 145 85" stroke="black" stroke-width="3" fill="none"/>
+  
+  <!-- Nose & Smile -->
+  <path d="M95 105 L 105 105 L 100 112 Z" fill="#FFC0CB"/>
+  <path d="M100 112 Q 90 125 80 115" stroke="#333" stroke-width="2" fill="none"/>
+  <path d="M100 112 Q 110 125 120 115" stroke="#333" stroke-width="2" fill="none"/>
+
+  <!-- Gold Earring -->
+  <circle cx="160" cy="35" r="5" stroke="#FFD700" stroke-width="3" fill="none"/>
+
+  <!-- Waving Arm -->
+  <path d="M145 120 L 175 80 L 185 85 L 155 125" fill="#FF9900" stroke="#CC6600"/>
+  <ellipse cx="180" cy="75" rx="12" ry="10" fill="#FF9900" stroke="#CC6600"/>
+  
+  <!-- Motion lines for wave -->
+  <path d="M190 65 L 198 60" stroke="#666" stroke-width="2" opacity="0.5"/>
+  <path d="M192 75 L 200 75" stroke="#666" stroke-width="2" opacity="0.5"/>
+  <path d="M190 85 L 198 90" stroke="#666" stroke-width="2" opacity="0.5"/>
+</svg>
