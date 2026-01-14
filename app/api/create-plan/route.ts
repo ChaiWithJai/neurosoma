@@ -8,7 +8,6 @@
 import { NextResponse } from 'next/server';
 import { IntakeSchema } from '@/lib/schemas';
 import { generatePlan, storePlan } from '@/lib/plan-generator';
-import { getSymptomEducation } from '@/lib/medgemma';
 
 export async function POST(request: Request) {
   try {
@@ -29,21 +28,9 @@ export async function POST(request: Request) {
 
     const intake = parseResult.data;
 
-    // If symptom description provided, get MedGemma education
-    let education = undefined;
-    if (intake.symptom_description && intake.symptom_description.length > 10) {
-      try {
-        education = await getSymptomEducation({
-          symptomDescription: intake.symptom_description,
-        });
-      } catch (error) {
-        console.warn('MedGemma education failed, continuing without:', error);
-        // Continue without education - non-blocking
-      }
-    }
-
     // Generate plan (instant, <10ms)
-    const plan = generatePlan(intake, education);
+    // Note: MedGemma education is now handled by /api/educate endpoint
+    const plan = generatePlan(intake);
 
     // Store plan for retrieval
     storePlan(plan, intake);
