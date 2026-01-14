@@ -122,7 +122,7 @@ function HeroView() {
             className="stat-badge inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/20 rounded-full text-sm text-red-400"
           >
             <AlertTriangle className="w-4 h-4" />
-            <span>65% of chronic pain patients feel dismissed by doctors</span>
+            <span>80% of women have had their pain dismissed by healthcare providers.</span>
           </motion.div>
 
           <motion.h1
