@@ -9,7 +9,7 @@
 **65% of chronic pain patients feel dismissed by doctors.** They're told "it's just stress" or "there's nothing wrong" — but they *know* something is happening in their body. The issue isn't that they're imagining it. The issue is they lack the **medical vocabulary** to describe their experience in a way healthcare providers take seriously.
 
 > "My doctor said it's just stress but I KNOW there's something wrong with my back. I just can't explain it in a way they understand."
-> — Real message from SOMA Breath community (25,000+ analyzed)
+> — Real message from breathwork and wellness groups (25,000+ analyzed)
 
 ## The Solution: MedGemma Gives You the Words
 

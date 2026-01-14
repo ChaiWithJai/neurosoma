@@ -112,14 +112,14 @@ function HeroView() {
       exit={{ opacity: 0 }}
       className="min-h-[calc(100vh-3.5rem)]"
     >
-      <div className="max-w-5xl mx-auto px-4 py-12">
+      <div className="max-w-5xl mx-auto px-4 py-12 mesh-gradient">
         {/* Hero Section */}
         <div className="text-center space-y-6 mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/20 rounded-full text-sm text-red-400"
+            className="stat-badge inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/20 rounded-full text-sm text-red-400"
           >
             <AlertTriangle className="w-4 h-4" />
             <span>65% of chronic pain patients feel dismissed by doctors</span>
@@ -152,8 +152,10 @@ function HeroView() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             onClick={() => setCurrentView("question")}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all"
+            className="btn-press btn-glow inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all"
           >
             Get the Words You Need
             <ArrowRight className="w-5 h-5" />
@@ -204,7 +206,7 @@ function HeroView() {
             <div>
               <h3 className="font-semibold">Real Voices from Our Community</h3>
               <p className="text-sm text-slate-400">
-                From 25,000+ WhatsApp messages in SOMA Breath groups
+                From 25,000+ community messages in breathwork and wellness groups
               </p>
             </div>
           </div>
@@ -213,24 +215,35 @@ function HeroView() {
             {[
               {
                 quote: "My doctor said it's just stress but I KNOW there's something wrong with my back. I just can't explain it in a way they understand.",
-                context: "Back pain sufferer, seeking answers"
+                context: "Back pain sufferer, seeking answers",
+                initials: "BP"
               },
               {
                 quote: "I've been to 5 specialists and no one can explain why I have this pain. I feel like I'm going crazy.",
-                context: "Chronic pain patient, 2+ years undiagnosed"
+                context: "Chronic pain patient, 2+ years undiagnosed",
+                initials: "CP"
               },
               {
                 quote: "Every time I try to describe my symptoms, they look at me like I'm making it up. I wish I had the words.",
-                context: "Fibromyalgia patient"
+                context: "Fibromyalgia patient",
+                initials: "FM"
               },
             ].map((item, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="px-5 py-4 bg-slate-800/50 rounded-lg border-l-2 border-red-500/50"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.7 + i * 0.1 }}
+                className="testimonial-card px-6 py-5 bg-slate-800/50 rounded-lg border-l-2 border-red-500/50"
               >
-                <p className="text-slate-300 italic mb-2">"{item.quote}"</p>
-                <p className="text-xs text-slate-500">— {item.context}</p>
-              </div>
+                <div className="flex items-start gap-4">
+                  <div className="avatar-placeholder">{item.initials}</div>
+                  <div>
+                    <p className="text-slate-300 italic mb-2">{item.quote}</p>
+                    <p className="text-xs text-slate-500">— {item.context}</p>
+                  </div>
+                </div>
+              </motion.div>
             ))}
           </div>
 
@@ -266,11 +279,11 @@ function FlowCard({
   };
 
   return (
-    <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6 relative">
-      <div className="absolute -top-3 -left-3 w-8 h-8 bg-slate-900 border border-slate-700 rounded-full flex items-center justify-center text-sm font-bold">
+    <div className="flow-card bg-slate-900/50 border border-slate-800 rounded-xl p-6 relative">
+      <div className="step-badge absolute -top-3 -left-3 w-8 h-8 bg-slate-900 border border-slate-700 rounded-full flex items-center justify-center text-sm font-bold">
         {step}
       </div>
-      <div className={`w-12 h-12 ${colors[color]} border rounded-xl flex items-center justify-center mb-4`}>
+      <div className={`icon-container w-12 h-12 ${colors[color]} border rounded-xl flex items-center justify-center mb-4`}>
         {icon}
       </div>
       <h3 className="font-semibold mb-2">{title}</h3>
@@ -392,7 +405,7 @@ function QuestionView() {
               value={healthQuestion}
               onChange={(e) => setHealthQuestion(e.target.value)}
               placeholder="Describe your health condition or question..."
-              className="w-full h-32 px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 resize-none"
+              className="input-premium w-full h-32 px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 resize-none"
             />
             <div className="flex justify-between text-xs text-slate-500 mt-1">
               <span>{healthQuestion.length < 20 ? `${20 - healthQuestion.length} more characters needed` : "Ready to submit"}</span>
