@@ -15,7 +15,7 @@
  */
 
 import { NextResponse } from 'next/server';
-import { getHealthEducation, checkMedGemmaHealth } from '@/lib/medgemma';
+import { getHealthEducation, checkMedGemmaHealth, langsmithClient } from '@/lib/medgemma';
 import { matchProtocol } from '@/lib/protocol-matcher';
 
 export const maxDuration = 60;
@@ -40,18 +40,21 @@ export async function POST(request: Request) {
       );
     }
 
-    // Get education from MedGemma
+    // Get education from MedGemma (traced via wrapAISDK)
     const education = await getHealthEducation({
       healthQuestion,
       condition,
       currentTreatments,
     });
 
-    // Match protocol based on contraindications analysis
+    // Match protocol based on contraindications
     const protocol = matchProtocol(
       education.recommended_protocol_type,
       condition
     );
+
+    // Flush traces before returning (critical for serverless)
+    await langsmithClient.awaitPendingTraceBatches();
 
     return NextResponse.json({
       success: true,
@@ -60,6 +63,9 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     console.error('MedGemma education error:', error);
+
+    // Flush any partial traces
+    await langsmithClient.awaitPendingTraceBatches();
 
     const isHealthy = await checkMedGemmaHealth();
 

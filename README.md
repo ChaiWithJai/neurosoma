@@ -1,33 +1,34 @@
 # NeuroSoma
 
-**MedGemma-Powered Patient Education + SOMA Breathwork for Chronic Pain Management**
+**Finally Heard. Finally Understood.**
 
 > 🏆 Built for the [MedGemma Impact Challenge](https://www.kaggle.com/competitions/med-gemma-impact-challenge) on Kaggle
 
-## What It Does
+## The Problem: Dismissed Patients
 
-NeuroSoma combines **AI-powered medical education** with **evidence-based breathwork protocols** to help chronic pain patients:
+**65% of chronic pain patients feel dismissed by doctors.** They're told "it's just stress" or "there's nothing wrong" — but they *know* something is happening in their body. The issue isn't that they're imagining it. The issue is they lack the **medical vocabulary** to describe their experience in a way healthcare providers take seriously.
 
-1. **Understand Their Symptoms** — MedGemma explains potential anatomical connections in educational terms
-2. **Prepare for Doctor Visits** — Get specific questions to ask healthcare providers
-3. **Manage Symptoms Daily** — 7-day personalized SOMA Breath protocol matched to their needs
+> "My doctor said it's just stress but I KNOW there's something wrong with my back. I just can't explain it in a way they understand."
+> — Real message from SOMA Breath community (25,000+ analyzed)
 
-## Why This Matters
+## The Solution: MedGemma Gives You the Words
 
-- **65% of chronic pain patients** report being dismissed by healthcare providers
-- **MedGemma's MSK gap** — Musculoskeletal/spine imaging is completely absent from training
-- **Real need** — 25,000+ messages from SOMA Breath community validate demand for pain management support
+NeuroSoma uses **MedGemma 27B** to transform how dismissed patients prepare for doctor visits:
+
+1. **Understand Your Pain** — Learn what's happening anatomically in clear, clinical terms
+2. **Get the Words** — Receive a **Communication Guide** with the exact medical vocabulary to use
+3. **Take Action Safely** — Get a breathwork protocol matched to your condition's precautions
 
 ## HAI-DEF Model Attribution
 
 This project uses **MedGemma 27B** from Google's [Health AI Developer Foundations (HAI-DEF)](https://huggingface.co/collections/google/health-ai-developer-foundations-hai-def) collection.
 
 - **Model**: `google/medgemma-27b-it`
-- **Architecture**: Gemma 3 decoder-only transformer
+- **Architecture**: Gemma 3 decoder-only transformer  
 - **Performance**: 87.7% on MedQA (within 3 points of DeepSeek R1 at 1/10th inference cost)
 - **License**: Gemma Terms of Use
 
-MedGemma is used for the **education layer** — helping patients understand potential anatomical connections before doctor visits.
+MedGemma powers the **Communication Guide** — teaching dismissed patients the specific phrases, medical terms, and language patterns that help them be taken seriously by healthcare providers.
 
 ## Tech Stack
 

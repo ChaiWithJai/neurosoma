@@ -18,6 +18,9 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { useNeuroSomaStore } from "@/lib/store";
+import { MarkdownContent } from "@/components/MarkdownContent";
+import type { EducationResponse } from "@/lib/medgemma";
+import type { MatchedProtocol } from "@/lib/protocol-matcher";
 
 // Community question examples from real 25K WhatsApp messages
 const COMMUNITY_EXAMPLES = [
@@ -116,10 +119,10 @@ function HeroView() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-sm text-cyan-400"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/20 rounded-full text-sm text-red-400"
           >
-            <Brain className="w-4 h-4" />
-            <span>MedGemma Impact Challenge Entry</span>
+            <AlertTriangle className="w-4 h-4" />
+            <span>65% of chronic pain patients feel dismissed by doctors</span>
           </motion.div>
 
           <motion.h1
@@ -128,10 +131,10 @@ function HeroView() {
             transition={{ delay: 0.2 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight"
           >
-            Health Education for
+            Finally Heard.
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-              Breathwork Communities
+              Finally Understood.
             </span>
           </motion.h1>
 
@@ -141,8 +144,8 @@ function HeroView() {
             transition={{ delay: 0.3 }}
             className="text-lg text-slate-400 max-w-2xl mx-auto"
           >
-            MedGemma-powered education helps community members understand their
-            conditions, identify contraindications, and find safe breathwork protocols.
+            MedGemma helps you <strong className="text-white">understand your condition</strong> and gives you
+            the <strong className="text-white">words to explain it</strong> — so doctors finally listen.
           </motion.p>
 
           <motion.button
@@ -152,7 +155,7 @@ function HeroView() {
             onClick={() => setCurrentView("question")}
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all"
           >
-            Ask Your Health Question
+            Get the Words You Need
             <ArrowRight className="w-5 h-5" />
           </motion.button>
         </div>
@@ -167,27 +170,27 @@ function HeroView() {
           <FlowCard
             icon={<BookOpen className="w-6 h-6" />}
             step={1}
-            title="MedGemma Education"
-            description="Understand the anatomy and physiology behind your condition"
+            title="Understand Your Pain"
+            description="MedGemma explains what's happening in your body in clear, medical terms"
             color="cyan"
           />
           <FlowCard
-            icon={<Shield className="w-6 h-6" />}
+            icon={<MessageSquare className="w-6 h-6" />}
             step={2}
-            title="Safety Screening"
-            description="Identify contraindications and precautions for breathwork"
+            title="Get the Words"
+            description="Receive a communication guide with the exact language to use with doctors"
             color="amber"
           />
           <FlowCard
             icon={<Wind className="w-6 h-6" />}
             step={3}
-            title="Protocol Matching"
-            description="Get a safe, evaluated protocol matched to your needs"
+            title="Take Action Safely"
+            description="A personalized breathwork protocol matched to your condition's precautions"
             color="emerald"
           />
         </motion.div>
 
-        {/* Proof Section */}
+        {/* Dismissed Patients Testimonials */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -195,34 +198,47 @@ function HeroView() {
           className="bg-slate-900/50 border border-slate-800 rounded-2xl p-8"
         >
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-purple-500/10 rounded-xl flex items-center justify-center">
-              <Users className="w-5 h-5 text-purple-400" />
+            <div className="w-10 h-10 bg-red-500/10 rounded-xl flex items-center justify-center">
+              <Users className="w-5 h-5 text-red-400" />
             </div>
             <div>
-              <h3 className="font-semibold">Built from Real Community Demand</h3>
+              <h3 className="font-semibold">Real Voices from Our Community</h3>
               <p className="text-sm text-slate-400">
-                25,353 WhatsApp messages analyzed to identify what people actually ask
+                From 25,000+ WhatsApp messages in SOMA Breath groups
               </p>
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="space-y-4">
             {[
-              { topic: "Stress & Anxiety", count: 267 },
-              { topic: "Healing & Recovery", count: 327 },
-              { topic: "Pain Management", count: 88 },
-              { topic: "Sleep Issues", count: 80 },
-              { topic: "Trauma Support", count: 96 },
-              { topic: "Energy & Focus", count: 368 },
-            ].map((item) => (
+              {
+                quote: "My doctor said it's just stress but I KNOW there's something wrong with my back. I just can't explain it in a way they understand.",
+                context: "Back pain sufferer, seeking answers"
+              },
+              {
+                quote: "I've been to 5 specialists and no one can explain why I have this pain. I feel like I'm going crazy.",
+                context: "Chronic pain patient, 2+ years undiagnosed"
+              },
+              {
+                quote: "Every time I try to describe my symptoms, they look at me like I'm making it up. I wish I had the words.",
+                context: "Fibromyalgia patient"
+              },
+            ].map((item, i) => (
               <div
-                key={item.topic}
-                className="flex items-center justify-between px-4 py-3 bg-slate-800/50 rounded-lg"
+                key={i}
+                className="px-5 py-4 bg-slate-800/50 rounded-lg border-l-2 border-red-500/50"
               >
-                <span className="text-slate-300">{item.topic}</span>
-                <span className="text-sm text-slate-500">{item.count} mentions</span>
+                <p className="text-slate-300 italic mb-2">"{item.quote}"</p>
+                <p className="text-xs text-slate-500">— {item.context}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-6 pt-6 border-t border-slate-700 text-center">
+            <p className="text-sm text-slate-400">
+              <span className="text-cyan-400 font-semibold">MedGemma changes this.</span>{" "}
+              It gives you the medical vocabulary to be taken seriously.
+            </p>
           </div>
         </motion.div>
       </div>
@@ -357,11 +373,10 @@ function QuestionView() {
               <button
                 key={i}
                 onClick={() => selectExample(i)}
-                className={`text-left text-sm px-3 py-2 rounded-lg transition-colors ${
-                  selectedExample === i
-                    ? "bg-cyan-500/20 border border-cyan-500/40 text-cyan-300"
-                    : "bg-slate-800/50 border border-slate-700 text-slate-400 hover:bg-slate-800"
-                }`}
+                className={`text-left text-sm px-3 py-2 rounded-lg transition-colors ${selectedExample === i
+                  ? "bg-cyan-500/20 border border-cyan-500/40 text-cyan-300"
+                  : "bg-slate-800/50 border border-slate-700 text-slate-400 hover:bg-slate-800"
+                  }`}
               >
                 {example.substring(0, 50)}...
               </button>
@@ -531,11 +546,10 @@ function TabButton({
   return (
     <button
       onClick={onClick}
-      className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-colors ${
-        active
-          ? colors[color]
-          : "bg-slate-900/50 border-slate-700 text-slate-400 hover:bg-slate-800"
-      }`}
+      className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-colors ${active
+        ? colors[color]
+        : "bg-slate-900/50 border-slate-700 text-slate-400 hover:bg-slate-800"
+        }`}
     >
       {icon}
       {label}
@@ -547,7 +561,7 @@ function EducationTab({
   education,
   onNext,
 }: {
-  education: NonNullable<ReturnType<typeof useNeuroSomaStore>["education"]>;
+  education: EducationResponse;
   onNext: () => void;
 }) {
   return (
@@ -559,34 +573,45 @@ function EducationTab({
       className="space-y-6"
     >
       {/* Anatomy Section */}
-      <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6">
+      <div className="card-glass-dark card-glass-glow rounded-xl p-6">
         <div className="flex items-center gap-2 text-cyan-400 mb-4">
           <BookOpen className="w-5 h-5" />
           <h3 className="font-semibold">Anatomy & Physiology</h3>
         </div>
-        <div className="text-slate-300 whitespace-pre-wrap leading-relaxed">
-          {education.anatomy_physiology}
-        </div>
+        <MarkdownContent content={education.anatomy_physiology} />
       </div>
 
       {/* Research Section */}
-      <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6">
+      <div className="card-glass-dark card-glass-glow rounded-xl p-6">
         <div className="flex items-center gap-2 text-blue-400 mb-4">
           <FileText className="w-5 h-5" />
           <h3 className="font-semibold">Research Evidence</h3>
         </div>
-        <div className="text-slate-300 whitespace-pre-wrap leading-relaxed">
-          {education.research_evidence}
+        <MarkdownContent content={education.research_evidence} />
+      </div>
+
+      {/* Communication Guide - Key for Dismissed Patients */}
+      <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/40 rounded-xl p-6">
+        <div className="flex items-center gap-2 text-amber-400 mb-4">
+          <MessageSquare className="w-5 h-5" />
+          <h3 className="font-semibold">How to Explain This to Your Doctor</h3>
         </div>
+        <div className="bg-amber-500/5 rounded-lg p-4 mb-4 border border-amber-500/20">
+          <p className="text-amber-200/80 text-sm italic">
+            Use these exact phrases and terms when speaking with healthcare providers.
+            Being specific and using medical vocabulary helps you be taken seriously.
+          </p>
+        </div>
+        <MarkdownContent content={education.communication_guide} />
       </div>
 
       {/* Questions for Doctor */}
-      <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6">
+      <div className="card-glass-dark card-glass-glow rounded-xl p-6">
         <h3 className="font-semibold mb-4">Questions for Your Healthcare Provider</h3>
         <ul className="space-y-3">
           {education.questions_for_doctor.map((q, i) => (
             <li key={i} className="flex items-start gap-3">
-              <span className="w-6 h-6 bg-slate-800 rounded-full flex items-center justify-center text-xs shrink-0">
+              <span className="w-6 h-6 bg-cyan-500/20 border border-cyan-500/30 rounded-full flex items-center justify-center text-xs shrink-0 text-cyan-400">
                 {i + 1}
               </span>
               <span className="text-slate-300">{q}</span>
@@ -598,7 +623,7 @@ function EducationTab({
       {/* Next Button */}
       <button
         onClick={onNext}
-        className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-amber-500/20 border border-amber-500/40 text-amber-400 rounded-xl font-medium hover:bg-amber-500/30 transition-colors"
+        className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-amber-500/20 border border-amber-500/40 text-amber-400 rounded-xl font-medium hover:bg-amber-500/30 transition-all btn-glow"
       >
         View Safety Information
         <ChevronRight className="w-5 h-5" />
@@ -611,7 +636,7 @@ function ContraindicationsTab({
   education,
   onNext,
 }: {
-  education: NonNullable<ReturnType<typeof useNeuroSomaStore>["education"]>;
+  education: EducationResponse;
   onNext: () => void;
 }) {
   const { contraindications } = education;
@@ -645,7 +670,7 @@ function ContraindicationsTab({
             {contraindications.absolute.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-red-200/80">
                 <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
-                {item}
+                <MarkdownContent content={item} />
               </li>
             ))}
           </ul>
@@ -660,7 +685,7 @@ function ContraindicationsTab({
             {contraindications.relative.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-amber-200/80">
                 <Shield className="w-4 h-4 shrink-0 mt-0.5" />
-                {item}
+                <MarkdownContent content={item} />
               </li>
             ))}
           </ul>
@@ -668,7 +693,7 @@ function ContraindicationsTab({
       )}
 
       {/* Warning Signs */}
-      <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6">
+      <div className="card-glass-dark rounded-xl p-6">
         <h3 className="font-semibold mb-4">Stop Immediately If You Experience</h3>
         <div className="grid sm:grid-cols-2 gap-2">
           {contraindications.warning_signs.map((sign, i) => (
@@ -677,16 +702,16 @@ function ContraindicationsTab({
               className="flex items-center gap-2 px-3 py-2 bg-slate-800/50 rounded-lg text-slate-300 text-sm"
             >
               <span className="w-2 h-2 bg-red-500 rounded-full" />
-              {sign}
+              <MarkdownContent content={sign} />
             </div>
           ))}
         </div>
       </div>
 
       {/* Medication Notes */}
-      <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6">
+      <div className="card-glass-dark rounded-xl p-6">
         <h3 className="font-semibold mb-2">Medication Considerations</h3>
-        <p className="text-slate-400">{contraindications.medication_notes}</p>
+        <MarkdownContent content={contraindications.medication_notes} className="text-slate-400" />
       </div>
 
       {/* Next Button */}
@@ -704,7 +729,7 @@ function ContraindicationsTab({
 function ProtocolTab({
   protocol,
 }: {
-  protocol: NonNullable<ReturnType<typeof useNeuroSomaStore>["protocol"]>;
+  protocol: MatchedProtocol;
 }) {
   return (
     <motion.div
@@ -715,7 +740,7 @@ function ProtocolTab({
       className="space-y-6"
     >
       {/* Protocol Header */}
-      <div className="bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 border border-emerald-500/30 rounded-xl p-6">
+      <div className="card-glass-dark card-glass-glow bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 rounded-xl p-6">
         <div className="flex items-start justify-between mb-4">
           <div>
             <div className="flex items-center gap-2 mb-2">
@@ -732,22 +757,22 @@ function ProtocolTab({
         <p className="text-slate-300">{protocol.description}</p>
         <div className="flex gap-4 mt-4 text-sm">
           {protocol.audio_guided && (
-            <span className="px-3 py-1 bg-slate-800/50 rounded-full text-slate-300">
-              Audio Guided
+            <span className="px-3 py-1.5 bg-emerald-500/20 border border-emerald-500/30 rounded-full text-emerald-300 badge-glow">
+              🎧 Audio Guided
             </span>
           )}
           {protocol.mbht_tracking && (
-            <span className="px-3 py-1 bg-slate-800/50 rounded-full text-slate-300">
-              MBHT Tracking
+            <span className="px-3 py-1.5 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-cyan-300 badge-glow">
+              📊 MBHT Tracking
             </span>
           )}
         </div>
       </div>
 
       {/* Rationale */}
-      <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6">
+      <div className="card-glass-dark rounded-xl p-6">
         <h3 className="font-semibold mb-2">Why This Protocol</h3>
-        <p className="text-slate-400">{protocol.rationale}</p>
+        <MarkdownContent content={protocol.rationale} />
       </div>
 
       {/* Weekly Breakdown */}

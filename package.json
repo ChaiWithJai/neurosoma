@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@ai-sdk/openai": "^3.0.1",
+    "@ai-sdk/openai-compatible": "^2.0.9",
     "@ai-sdk/react": "^3.0.3",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-label": "^2.1.8",
@@ -26,11 +27,14 @@
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.23.26",
+    "langsmith": "^0.4.6",
     "lucide-react": "^0.562.0",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-day-picker": "^9.13.0",
     "react-dom": "19.2.3",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.4.0",
     "zod": "^4.2.1",
     "zustand": "^5.0.9"
