@@ -1,0 +1,37 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cape (Back) -->
+  <path d="M40 70 L 20 180 L 100 170 L 180 180 L 160 70" fill="#2C0404"/>
+  <path d="M40 70 Q 20 50 50 40 L 100 60 L 150 40 Q 180 50 160 70" fill="#990000"/>
+
+  <!-- Body -->
+  <path d="M50 180 C 50 180, 50 100, 50 100 C 50 50, 150 50, 150 100 C 150 100, 150 180, 150 180" fill="#333333"/>
+  
+  <!-- Ears -->
+  <path d="M55 60 L 40 20 L 80 50 Z" fill="#333333"/>
+  <path d="M145 60 L 160 20 L 120 50 Z" fill="#333333"/>
+  <path d="M58 55 L 48 30 L 70 50 Z" fill="#555"/>
+  <path d="M142 55 L 152 30 L 130 50 Z" fill="#555"/>
+
+  <!-- Eyes (Spooky Green) -->
+  <ellipse cx="75" cy="90" rx="20" ry="25" fill="#7CFC00"/>
+  <ellipse cx="125" cy="90" rx="20" ry="25" fill="#7CFC00"/>
+  <!-- Slit Pupils -->
+  <ellipse cx="75" cy="90" rx="3" ry="18" fill="black"/>
+  <ellipse cx="125" cy="90" rx="3" ry="18" fill="black"/>
+
+  <!-- Nose & Mouth -->
+  <path d="M95 125 L 105 125 L 100 132 Z" fill="#FFC0CB"/>
+  <path d="M100 132 L 90 140 M 100 132 L 110 140" stroke="#CCCCCC" stroke-width="2"/>
+
+  <!-- Fangs -->
+  <path d="M92 138 L 95 150 L 98 138 Z" fill="white"/>
+  <path d="M102 138 L 105 150 L 108 138 Z" fill="white"/>
+
+  <!-- Whiskers -->
+  <path d="M40 130 L 10 125 M 40 135 L 10 135 M 40 140 L 10 145" stroke="#666" opacity="0.5"/>
+  <path d="M160 130 L 190 125 M 160 135 L 190 135 M 160 140 L 190 145" stroke="#666" opacity="0.5"/>
+  
+  <!-- Bowtie -->
+  <path d="M100 160 L 85 150 L 85 170 Z" fill="#990000"/>
+  <path d="M100 160 L 115 150 L 115 170 Z" fill="#990000"/>
+</svg>

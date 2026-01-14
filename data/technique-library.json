@@ -1,0 +1,355 @@
+{
+  "metadata": {
+    "name": "NAP Technique Library",
+    "version": "1.0.0",
+    "created": "2025-12-24",
+    "purpose": "Curriculum backbone for Neurosomatics Action Plan",
+    "source": "SOMA BIG Platform - Level 1a Breath Works Challenge"
+  },
+  "techniques": [
+    {
+      "id": "mbht",
+      "name": "Morning Breath Hold Time (MBHT)",
+      "short_description": "Your internal fitness tracker - measure oxygen efficiency",
+      "category": "assessment",
+      "duration_minutes": 2,
+      "difficulty": "beginner",
+      "nap_day": 1,
+      "purpose": "Baseline tracking and daily progress measurement",
+      "best_for": ["baseline", "progress_tracking", "self_awareness"],
+      "instructions": {
+        "summary": "Sit upright, relax with nasal breathing for 1-2 minutes, then hold breath after normal exhale until first sign of discomfort",
+        "steps": [
+          "Sit upright with straight back first thing in morning",
+          "Focus on nasal breathing for 1-2 minutes",
+          "After a normal inhale and exhale, start timer",
+          "Hold breath until first sign of discomfort (diaphragm twitch)",
+          "Record your time in seconds"
+        ]
+      },
+      "scoring": {
+        "0-10": "Low oxygenation - potential health concerns",
+        "10-20": "Stress/anxiety indicators - room for improvement",
+        "20-40": "Average - occasional stress vulnerability",
+        "40+": "Optimal - efficient oxygen use",
+        "60+": "Yogic level - minimal stress symptoms"
+      },
+      "source": {
+        "course": "Level 1a",
+        "lesson": "How to do MBHT",
+        "url": "https://members.somabreath.com/courses/products/ee2822d0-21f1-4e46-9d17-85ed64d0792f/categories/583399e1-143b-4a49-9e7c-5e858811d183/posts/2045f71b-96ef-4d63-bee1-fea463478af5",
+        "post_id": "2045f71b-96ef-4d63-bee1-fea463478af5"
+      },
+      "related_source": {
+        "lesson": "About MBHT score",
+        "url": "https://members.somabreath.com/courses/products/ee2822d0-21f1-4e46-9d17-85ed64d0792f/categories/583399e1-143b-4a49-9e7c-5e858811d183/posts/dd3bf944-0622-431e-9767-b007ca207e8c",
+        "post_id": "dd3bf944-0622-431e-9767-b007ca207e8c"
+      }
+    },
+    {
+      "id": "breath_awareness",
+      "name": "Breath Awareness Meditation",
+      "short_description": "Train towards slower, subtler, more rhythmic breathing",
+      "category": "foundation",
+      "duration_minutes": 10,
+      "difficulty": "beginner",
+      "nap_day": 1,
+      "purpose": "Foundation practice for all other techniques",
+      "best_for": ["anxiety", "stress_relief", "sleep", "physical_tension"],
+      "instructions": {
+        "summary": "Lie down or sit comfortably, focus on sounds, let thoughts fade, observe breath without controlling",
+        "steps": [
+          "Lie on back or sit with straight back",
+          "Bring awareness to any sound in the environment",
+          "Notice the inner voice fading as you become present",
+          "Imagine thoughts as a stream with no attachment",
+          "Allow breath to naturally slow and become rhythmic",
+          "Practice for 10 minutes or until deeply relaxed"
+        ]
+      },
+      "audio_required": true,
+      "audio_type": "Trypnaural Brainwave Meditation",
+      "source": {
+        "course": "Level 1a",
+        "lesson": "Breath Awareness Exercise",
+        "url": "https://members.somabreath.com/courses/products/ee2822d0-21f1-4e46-9d17-85ed64d0792f/categories/583399e1-143b-4a49-9e7c-5e858811d183/posts/3c7b6ab8-3a03-469b-b45d-c7936b38ca86",
+        "post_id": "3c7b6ab8-3a03-469b-b45d-c7936b38ca86"
+      }
+    },
+    {
+      "id": "diaphragmatic_breathing",
+      "name": "Diaphragmatic Breathing",
+      "short_description": "The healthy breathing pattern - nose to belly",
+      "category": "foundation",
+      "duration_minutes": 5,
+      "difficulty": "beginner",
+      "nap_day": 2,
+      "purpose": "Establish baseline healthy breathing pattern",
+      "best_for": ["stress_relief", "anxiety", "physical_tension", "default_state"],
+      "instructions": {
+        "summary": "Breathe through nose into diaphragm with silent, subtle inhalation and relaxed exhalation",
+        "steps": [
+          "Place left hand on belly, right hand on chest",
+          "Breathe in silently through nose into lower back/belly",
+          "Chest should barely move, belly expands",
+          "Exhale gently and allow natural 4-second pause",
+          "Aim for silent, subtle, smooth breathing"
+        ]
+      },
+      "source": {
+        "course": "Level 1a",
+        "lesson": "Healthy Breathing Pattern",
+        "url": "https://members.somabreath.com/courses/products/ee2822d0-21f1-4e46-9d17-85ed64d0792f/categories/583399e1-143b-4a49-9e7c-5e858811d183/posts/1c87c8b2-e96a-49fc-a08f-e1749ff37469",
+        "post_id": "1c87c8b2-e96a-49fc-a08f-e1749ff37469"
+      }
+    },
+    {
+      "id": "reduced_breathing",
+      "name": "Reduced Breathing",
+      "short_description": "Slow and entrain your breath for calm and focus",
+      "category": "core",
+      "duration_minutes": 10,
+      "difficulty": "beginner",
+      "nap_day": 2,
+      "purpose": "Increase CO2 tolerance and oxygen efficiency",
+      "best_for": ["scattered_focus", "anxiety", "creative_block", "pre_deep_work"],
+      "instructions": {
+        "summary": "Follow audio guide to slow breathing rate, making it more rhythmic, harmonic, and coherent",
+        "steps": [
+          "Find comfortable spot, sit or lie down",
+          "Follow breath entrainment audio guide",
+          "Allow breathing to naturally slow",
+          "Focus on rhythm over depth",
+          "Practice for 10 minutes"
+        ]
+      },
+      "benefits": [
+        "Slows breathing rate",
+        "Increases CO2 tolerance",
+        "Enhances oxygen efficiency",
+        "Creates calm, relaxed state"
+      ],
+      "audio_required": true,
+      "audio_type": "SOMA Breath Entrainment",
+      "source": {
+        "course": "Level 1a",
+        "lesson": "Reduced Breathing Exercise",
+        "url": "https://members.somabreath.com/courses/products/ee2822d0-21f1-4e46-9d17-85ed64d0792f/categories/c8857d81-6a1a-4266-9d27-5837ac5f4f2a/posts/266907a5-46a3-4559-b749-49fa1a2d46d8",
+        "post_id": "266907a5-46a3-4559-b749-49fa1a2d46d8"
+      }
+    },
+    {
+      "id": "hindu_squat",
+      "name": "Hindu Squat",
+      "short_description": "Anaerobic exercise to boost MBHT and energy",
+      "category": "physical",
+      "duration_minutes": 3,
+      "difficulty": "beginner",
+      "nap_day": 4,
+      "purpose": "Increase breath hold time through intermittent hypoxia",
+      "best_for": ["low_energy", "physical_tension", "mbht_improvement"],
+      "instructions": {
+        "summary": "Slow squat with coordinated breathing - 15s exhale down, 5s hold, 15s inhale up",
+        "steps": [
+          "Stand feet hip-width apart, arms extended forward",
+          "Inhale deeply through nose",
+          "Exhale through nose for 10-15 seconds while squatting down",
+          "Hold squat at bottom for 5 seconds",
+          "Inhale for 10-15 seconds while rising",
+          "Take recovery breaths, repeat 3-5 times"
+        ]
+      },
+      "benefits": [
+        "Induces intermittent hypoxia",
+        "Strengthens psoas muscles",
+        "Increases breath hold time",
+        "Improves oxygen efficiency"
+      ],
+      "source": {
+        "course": "Level 1a",
+        "lesson": "Hindu Squat",
+        "url": "https://members.somabreath.com/courses/products/ee2822d0-21f1-4e46-9d17-85ed64d0792f/categories/c8857d81-6a1a-4266-9d27-5837ac5f4f2a/posts/8d4accf9-fb23-42c2-bd5e-3560b28b2008",
+        "post_id": "8d4accf9-fb23-42c2-bd5e-3560b28b2008"
+      },
+      "related_source": {
+        "lesson": "Anaerobic Exercise",
+        "url": "https://members.somabreath.com/courses/products/ee2822d0-21f1-4e46-9d17-85ed64d0792f/categories/c8857d81-6a1a-4266-9d27-5837ac5f4f2a/posts/491538f4-02bf-4218-ab78-a7bd3702e921",
+        "post_id": "491538f4-02bf-4218-ab78-a7bd3702e921"
+      }
+    },
+    {
+      "id": "coherence_breathing",
+      "name": "Coherence Breathing",
+      "short_description": "6 breaths/minute for HRV optimization and emotional balance",
+      "category": "core",
+      "duration_minutes": 10,
+      "difficulty": "beginner",
+      "nap_day": 3,
+      "purpose": "Balance nervous system and regulate emotions",
+      "best_for": ["anxiety", "emotional_reactivity", "pre_conversation", "performance_anxiety"],
+      "instructions": {
+        "summary": "Breathe at 6 breaths per minute with equal inhale/exhale to optimize HRV",
+        "steps": [
+          "Find quiet, comfortable space",
+          "Use headphones for entrainment audio",
+          "Sit upright or lie down",
+          "Follow 5-second inhale, 5-second exhale pattern",
+          "Practice for 10 minutes",
+          "Can repeat 2-3x during day when off balance"
+        ]
+      },
+      "science": {
+        "mechanism": "Equal inhalation and exhalation at 6 breaths/min balances sympathetic and parasympathetic nervous systems",
+        "hrv_effect": "Creates coherent, sine wave-like HRV patterns",
+        "benefits": [
+          "Optimizes mood and energy",
+          "Improves blood flow",
+          "Enhances nervous system harmony"
+        ]
+      },
+      "audio_required": true,
+      "audio_type": "Heart Coherence Trainer",
+      "source": {
+        "course": "Level 1a",
+        "lesson": "Coherence Breathing",
+        "url": "https://members.somabreath.com/courses/products/ee2822d0-21f1-4e46-9d17-85ed64d0792f/categories/ea4c0ebf-93f4-4fdf-af45-f8a6a0162c4e/posts/bb5c30e6-3353-4bc6-b905-7dff89c0e380",
+        "post_id": "bb5c30e6-3353-4bc6-b905-7dff89c0e380"
+      }
+    },
+    {
+      "id": "soma_awakening",
+      "name": "SOMA Breath Awakening Technique",
+      "short_description": "Peak performance breathwork with breath retention",
+      "category": "advanced",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "nap_day": null,
+      "purpose": "Induce states of inner coherence and bliss for peak performance",
+      "best_for": ["peak_performance", "creativity", "manifesting", "major_reset"],
+      "warning": "Not recommended for first 4 days. Build foundation first.",
+      "instructions": {
+        "summary": "Rhythmic breathing (2-beat inhale, 4-beat exhale) + breath retention + humming with guided imagery",
+        "steps": [
+          "Find quiet, comfortable space with headphones",
+          "Follow rhythmic breathing pattern (inhale 2 beats, exhale 4 beats)",
+          "After full exhale, hold breath to point of discomfort",
+          "This induces intermittent hypoxia and nitric oxide release",
+          "Include humming and guided visualization",
+          "Aim for 60-90 second breath holds with practice"
+        ]
+      },
+      "benefits": [
+        "Awakens stem cells for regeneration",
+        "Enhances oxygen efficiency",
+        "Improves cognitive function",
+        "Strengthens cardiovascular system",
+        "Induces states of bliss"
+      ],
+      "audio_required": true,
+      "audio_type": "8 Mins Morning Gratitude",
+      "source": {
+        "course": "Level 1a",
+        "lesson": "SOMA Breath Awakening Technique",
+        "url": "https://members.somabreath.com/courses/products/ee2822d0-21f1-4e46-9d17-85ed64d0792f/categories/242a3771-9a76-4166-9749-c90d122d594e/posts/5b4bcccb-0ede-4798-9dd9-0758b1eafe04",
+        "post_id": "5b4bcccb-0ede-4798-9dd9-0758b1eafe04"
+      }
+    }
+  ],
+  "obstacle_technique_map": {
+    "anxiety": ["coherence_breathing", "breath_awareness", "reduced_breathing"],
+    "low_energy": ["hindu_squat", "soma_awakening"],
+    "scattered_focus": ["reduced_breathing", "breath_awareness"],
+    "emotional_reactivity": ["coherence_breathing", "breath_awareness"],
+    "creative_block": ["reduced_breathing", "soma_awakening"],
+    "physical_tension": ["breath_awareness", "diaphragmatic_breathing", "hindu_squat"],
+    "performance_anxiety": ["coherence_breathing", "diaphragmatic_breathing"]
+  },
+  "goal_plans": {
+    "presentation": {
+      "name": "High-Stakes Presentation",
+      "recommended_days": 7,
+      "primary_technique": "coherence_breathing",
+      "ritual_components": ["mbht", "coherence_breathing", "diaphragmatic_breathing"],
+      "event_day_protocol": ["5-min coherence breathing 30 min before", "diaphragmatic awareness during"]
+    },
+    "conversation": {
+      "name": "Difficult Conversation",
+      "recommended_days": 7,
+      "primary_technique": "coherence_breathing",
+      "ritual_components": ["mbht", "coherence_breathing", "breath_awareness"],
+      "event_day_protocol": ["5-min coherence breathing 15 min before", "breath awareness during pauses"]
+    },
+    "deadline": {
+      "name": "Creative Deadline",
+      "recommended_days": 7,
+      "primary_technique": "reduced_breathing",
+      "ritual_components": ["mbht", "reduced_breathing", "hindu_squat"],
+      "event_day_protocol": ["10-min reduced breathing to start work sessions", "hindu squat when energy dips"]
+    },
+    "interview": {
+      "name": "Job Interview / Career Transition",
+      "recommended_days": 14,
+      "primary_technique": "coherence_breathing",
+      "ritual_components": ["mbht", "coherence_breathing", "soma_awakening"],
+      "event_day_protocol": ["soma_awakening morning of", "5-min coherence 30 min before"]
+    },
+    "recovery": {
+      "name": "Recover from Setback",
+      "recommended_days": 7,
+      "primary_technique": "breath_awareness",
+      "ritual_components": ["mbht", "breath_awareness", "coherence_breathing"],
+      "event_day_protocol": ["breath_awareness when ruminating", "coherence for mood reset"]
+    }
+  },
+  "day_curriculum": {
+    "1": {
+      "name": "CALIBRATE",
+      "focus": "Baseline and safety",
+      "techniques": ["mbht", "breath_awareness"],
+      "time_minutes": 15,
+      "deliverable": "MBHT baseline + trigger journal entry"
+    },
+    "2": {
+      "name": "REGULATE",
+      "focus": "Foundation breathing",
+      "techniques": ["mbht", "diaphragmatic_breathing", "reduced_breathing"],
+      "time_minutes": 20,
+      "deliverable": "Completion log"
+    },
+    "3": {
+      "name": "BALANCE",
+      "focus": "Emotional regulation",
+      "techniques": ["mbht", "coherence_breathing"],
+      "time_minutes": 20,
+      "deliverable": "Pre/post state check"
+    },
+    "4": {
+      "name": "ENERGIZE",
+      "focus": "Physical activation",
+      "techniques": ["mbht", "hindu_squat", "reduced_breathing"],
+      "time_minutes": 20,
+      "deliverable": "Energy log"
+    },
+    "5": {
+      "name": "MATCH",
+      "focus": "Technique selection",
+      "techniques": ["mbht", "technique_matching_exercise"],
+      "time_minutes": 25,
+      "deliverable": "Ritual draft"
+    },
+    "6": {
+      "name": "REHEARSE",
+      "focus": "Practice ritual",
+      "techniques": ["mbht", "full_ritual_practice"],
+      "time_minutes": 20,
+      "deliverable": "Revised ritual"
+    },
+    "7": {
+      "name": "READY",
+      "focus": "Final preparation",
+      "techniques": ["mbht", "ritual_practice", "visualization"],
+      "time_minutes": 20,
+      "deliverable": "Confidence score + final ritual"
+    }
+  }
+}

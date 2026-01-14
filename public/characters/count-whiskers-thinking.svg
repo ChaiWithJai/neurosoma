@@ -1,0 +1,56 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Night Sky Elements -->
+  <circle cx="170" cy="30" r="15" fill="#F0E68C" opacity="0.9"/>
+  <circle cx="165" cy="28" r="12" fill="url(#nightBg)"/>
+  <circle cx="30" cy="50" r="2" fill="#FFF"/>
+  <circle cx="45" cy="30" r="1.5" fill="#FFF"/>
+  <circle cx="25" cy="70" r="1" fill="#FFF"/>
+  
+  <!-- Cape (Back) - Flowing -->
+  <path d="M45 75 L 15 190 L 100 175 L 185 190 L 155 75" fill="#2C0404"/>
+  <path d="M45 75 Q 20 55 55 45 L 100 65 L 145 45 Q 180 55 155 75" fill="#990000"/>
+
+  <!-- Body -->
+  <path d="M55 185 C 55 185, 55 105, 55 105 C 55 60, 145 60, 145 105 C 145 105, 145 185, 145 185" fill="#333333"/>
+  
+  <!-- Ears -->
+  <path d="M60 65 L 45 30 L 82 55 Z" fill="#333333"/>
+  <path d="M140 65 L 155 30 L 118 55 Z" fill="#333333"/>
+  <path d="M62 60 L 52 40 L 72 55 Z" fill="#555"/>
+  <path d="M138 60 L 148 40 L 128 55 Z" fill="#555"/>
+
+  <!-- Eyes (Looking up - Thinking) -->
+  <ellipse cx="80" cy="95" rx="18" ry="22" fill="#7CFC00"/>
+  <ellipse cx="120" cy="95" rx="18" ry="22" fill="#7CFC00"/>
+  <!-- Pupils looking up -->
+  <ellipse cx="80" cy="88" rx="3" ry="15" fill="black"/>
+  <ellipse cx="120" cy="88" rx="3" ry="15" fill="black"/>
+
+  <!-- Nose & Mouth -->
+  <path d="M95 125 L 105 125 L 100 132 Z" fill="#FFC0CB"/>
+  <path d="M100 132 L 92 140 M 100 132 L 108 140" stroke="#CCCCCC" stroke-width="2"/>
+
+  <!-- Fangs (smaller when thinking) -->
+  <path d="M94 138 L 96 145 L 98 138 Z" fill="white"/>
+  <path d="M102 138 L 104 145 L 106 138 Z" fill="white"/>
+
+  <!-- Thinking Paw on Chin -->
+  <ellipse cx="100" cy="150" rx="15" ry="10" fill="#333" stroke="#444"/>
+  
+  <!-- Thought Bubble -->
+  <circle cx="160" cy="90" r="5" fill="white" opacity="0.8"/>
+  <circle cx="170" cy="75" r="8" fill="white" opacity="0.8"/>
+  <ellipse cx="180" cy="55" rx="12" ry="10" fill="white" opacity="0.9"/>
+  <text x="175" y="58" font-size="10" fill="#666">?</text>
+  
+  <!-- Bowtie -->
+  <path d="M100 160 L 88 152 L 88 168 Z" fill="#990000"/>
+  <path d="M100 160 L 112 152 L 112 168 Z" fill="#990000"/>
+  
+  <defs>
+    <linearGradient id="nightBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+  </defs>
+</svg>
