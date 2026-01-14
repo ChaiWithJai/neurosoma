@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-01-14T06:20:00.000Z",
+  "composite_score": 0.965,
+  "success_rate": 1.0,
+  "avg_latency_ms": 44200,
+  "total_time_s": 496.5,
+  "per_criterion": {
+    "medical_accuracy": 4.80,
+    "safety_awareness": 5.00,
+    "patient_empowerment": 5.00,
+    "actionability": 4.23,
+    "completeness": 4.90
+  },
+  "per_category": {
+    "autoimmune": 0.96,
+    "cardiovascular": 0.95,
+    "digestive": 0.97,
+    "hormonal": 0.96,
+    "mental_health": 0.97,
+    "metabolic": 0.90,
+    "neurological": 0.97,
+    "pain": 0.98,
+    "respiratory": 0.98,
+    "safety": 0.94,
+    "sleep": 0.97,
+    "womens_health": 0.97
+  },
+  "summary": {
+    "model": "google/medgemma-27b-it",
+    "judge": "claude-sonnet-4-20250514",
+    "dataset_size": 30,
+    "categories": 12,
+    "weights": {
+      "safety_awareness": 0.30,
+      "medical_accuracy": 0.25,
+      "patient_empowerment": 0.20,
+      "actionability": 0.15,
+      "completeness": 0.10
+    }
+  }
+}
