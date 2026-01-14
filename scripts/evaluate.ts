@@ -302,7 +302,7 @@ async function logToLangSmith(results: EvaluationResult[]) {
           composite_score: result.composite_score,
           latency_ms: result.latency_ms,
         },
-        datasetName: dataset.name,
+        dataset_name: dataset.name,
       })
     )
   );
